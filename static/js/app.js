@@ -4,10 +4,6 @@ const tableData = data;
 // get table references
 var tbody = d3.select("tbody");
 
-function buildTable(data) {
-  // First, clear out any existing data
-  tbody.html("");
-}
 
 function buildTable(data) {
   // First, clear out any existing data
@@ -46,7 +42,7 @@ function updateFilters() {
     // to the filters list. Otherwise, clear that filter from the filters object.
     if (filter_value)
     {
-      filters[new_id] = new_element;
+      filters[new_id] = filter_value;
     }
     else
     {
@@ -69,7 +65,7 @@ function updateFilters() {
     (
       ([key,value]) => 
         {
-          new_data = new_data.filter(row +> row[key] == value);
+          new_data = new_data.filter(row => row[key] === value);
         }
     );    
 
